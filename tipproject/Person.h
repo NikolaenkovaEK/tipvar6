@@ -1,30 +1,54 @@
-#ifndef PERSON_H
-#define PERSON_H
+#pragma pack(push,1)
 
 #include <string>
 #include <ostream>
+using namespace std;
 
 class Person {
 public:
+	// Конструктор без аргументов
 	Person();
-	Person(const std::string & NameValue, unsigned int AgeValue);
-	Person(const Person & AnotherPerson);
-	Person & operator = (const Person & AnotherPerson);
+
+	// Конструктор из имени и возраста
+	Person(const string& name, unsigned int age);
+
+	// Конструктор копии
+	Person(const Person& another);
+
+	// Оператор присваивания
+	Person& operator = (const Person& another);
+
+	// Деструктор
 	~Person();
 
-	const std::string & GetName() const;
-	void SetName(const std::string & NameValue);
+	// Получить имя 
+	const string& GetName() const;
 
+	// Установить имя
+	void SetName(const string& name);
+
+	// Получить возраст
 	unsigned int GetAge() const;
-	void SetAge(unsigned int AgeValue);
 
-	void Print(std::ostream & Stream) const;
+	// Установить возраст
+	void SetAge(unsigned int age);
 
+	// Напечатать в поток stream
+	void Print(ostream& stream) const;
+
+	// Возвращает true, если человек может голосовать
 	bool CanVote() const;
 
-private:
-	std::string Name;
-	unsigned int Age;
-};
+	// Операции сравнения персон, в отличие от Home, сделаны 
+	// дружественными операциями для демонстрации
+	friend bool operator == (const Person& p1, const Person& p2);
+	friend bool operator != (const Person& p1, const Person& p2);
 
-#endif // PERSON_H
+private:
+	// Имя
+	string name;
+
+	// Возраст
+	unsigned int age;
+};
+#pragma pack(pop)
