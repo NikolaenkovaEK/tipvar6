@@ -1,35 +1,6 @@
-/*
-3)
-#ifndef HOME_H
-#define HOME_H
-Это устаревший способ.Используйте #pragma pack
-
-#pragma pack - это упаковка данных в структуре. 
-#pragma once - нестандартное расширение.
-
-5)
-Home(const Home & AnotherHome);
-Home & operator = (const Home & AnotherHome);
-Символь & прижимайте к типу, так же как и с указателем : Home*, Home&.
-имя переменных и аргументов называйте с маленькой буквы, чтобы отличать от типов.
-
-Home* a, b, c; -читается три указателя на Home.
-
-
-8)
-std::string HomeName;
-std::vector<Person> Persons;
-Чтобы не писать все время std::, можно написать на самом верху using namespace std;
-
-Если в заголовочном файле написать using namespace std, то это распространится 
-на другие включающие его заголовочные файлы, что может поломать программу 
-из - за конфликтов имен из std.
-*/
-
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-//int srand(time(NULL)); 
 
 #include "Street.h"
 
@@ -42,7 +13,7 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Добавляем дом
+		// Р”РѕР±Р°РІР»СЏРµРј РґРѕРј
 		try {
 			cout << "adding home 1\n";
 			Home h1(1);
@@ -56,7 +27,7 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Добавляем еще один дом
+		// Р”РѕР±Р°РІР»СЏРµРј РµС‰Рµ РѕРґРёРЅ РґРѕРј
 		try {
 			cout << "adding home 2\n";
 			Home h2(2);
@@ -69,13 +40,13 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Выводим полученную улицу
+		// Р’С‹РІРѕРґРёРј РїРѕР»СѓС‡РµРЅРЅСѓСЋ СѓР»РёС†Сѓ
 		cout << "initial street:\n";
 		s.Print(cout);
 
 		cout << "---------------\n";
 
-		// Удаляем существующий дом
+		// РЈРґР°Р»СЏРµРј СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РґРѕРј
 		try {
 			cout << "removing home 1:\n";
 			s.Remove(s.HomeAt(0));
@@ -90,7 +61,7 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Удаляем несуществующий дом
+		// РЈРґР°Р»СЏРµРј РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РґРѕРј
 		try {
 			cout << "removing home at index 31:\n";
 			s.Remove(31);
@@ -100,7 +71,7 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Удаляем другой несуществующий дом
+		// РЈРґР°Р»СЏРµРј РґСЂСѓРіРѕР№ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РґРѕРј
 		try {
 			cout << "removing empty home:\n";
 			s.Remove(Home());
@@ -110,7 +81,7 @@ int main(int argc, char* argv[]) {
 
 		cout << "---------------\n";
 
-		// Фильтруем и выводим тех, кто может голосовать
+		// Р¤РёР»СЊС‚СЂСѓРµРј Рё РІС‹РІРѕРґРёРј С‚РµС…, РєС‚Рѕ РјРѕР¶РµС‚ РіРѕР»РѕСЃРѕРІР°С‚СЊ
 		try {
 			cout << "list of persons who can vote:\n";
 			Street f = s.FilterPersonsWhoCanVote();
