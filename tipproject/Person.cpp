@@ -2,31 +2,31 @@
 using namespace std;
 
 Person::Person() {
-	// Имя само инициализируется пустым
+	// РРјСЏ СЃР°РјРѕ РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚СЃСЏ РїСѓСЃС‚С‹Рј
 	age = 0;
 }
 
 Person::Person(const string& name, unsigned int age) {
-	// Т.к. у нас name и age имеются как поля в классе, то, чтобы
-	// отличить их от аргументов, нужно на них сослаться через this
+	// Рў.Рє. Сѓ РЅР°СЃ name Рё age РёРјРµСЋС‚СЃСЏ РєР°Рє РїРѕР»СЏ РІ РєР»Р°СЃСЃРµ, С‚Рѕ, С‡С‚РѕР±С‹
+	// РѕС‚Р»РёС‡РёС‚СЊ РёС… РѕС‚ Р°СЂРіСѓРјРµРЅС‚РѕРІ, РЅСѓР¶РЅРѕ РЅР° РЅРёС… СЃРѕСЃР»Р°С‚СЊСЃСЏ С‡РµСЂРµР· this
 	this->name = name;
 	this->age = age;
 }
 
 Person::Person(const Person& another) {
-	// Задаем имя и возраст такими же, как и у another
+	// Р—Р°РґР°РµРј РёРјСЏ Рё РІРѕР·СЂР°СЃС‚ С‚Р°РєРёРјРё Р¶Рµ, РєР°Рє Рё Сѓ another
 	name = another.name;
 	age = another.age;
 }
 
 Person& Person::operator = (const Person& another) {
-	// Если указатель на this такой же, как и на another, то мы 
-	// пытаемся присвоить себя себе же
+	// Р•СЃР»Рё СѓРєР°Р·Р°С‚РµР»СЊ РЅР° this С‚Р°РєРѕР№ Р¶Рµ, РєР°Рє Рё РЅР° another, С‚Рѕ РјС‹ 
+	// РїС‹С‚Р°РµРјСЃСЏ РїСЂРёСЃРІРѕРёС‚СЊ СЃРµР±СЏ СЃРµР±Рµ Р¶Рµ
 	if(this != &another) {
 		name = another.name;
 		age = another.age;
 	}
-	// Возвращаем ссылку на себя
+	// Р’РѕР·РІСЂР°С‰Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° СЃРµР±СЏ
 	return *this;
 }
 
@@ -50,7 +50,7 @@ void Person::SetAge(unsigned int age) {
 }
 
 void Person::Print(ostream& stream) const {
-	// Печатаем "NoName", если имя не задано, т.е. пустая строка
+	// РџРµС‡Р°С‚Р°РµРј "NoName", РµСЃР»Рё РёРјСЏ РЅРµ Р·Р°РґР°РЅРѕ, С‚.Рµ. РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
 	if(name.empty()) {
 		stream << "NoName";
 	} else {
@@ -65,11 +65,11 @@ bool Person::CanVote() const {
 
 bool operator == (const Person& p1, const Person& p2) {
 	return p1.age == p2.age && 
-		// Если string.compare(string) возвращает 0, то строки одинаковые
+		// Р•СЃР»Рё string.compare(string) РІРѕР·РІСЂР°С‰Р°РµС‚ 0, С‚Рѕ СЃС‚СЂРѕРєРё РѕРґРёРЅР°РєРѕРІС‹Рµ
 		0 == p1.name.compare(p2.name);
 }
 
 bool operator != (const Person& p1, const Person& p2) {
-	// Инвертируем значение оператора == для получения результата
+	// РРЅРІРµСЂС‚РёСЂСѓРµРј Р·РЅР°С‡РµРЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° == РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 	return !(p1 == p2);
 }
